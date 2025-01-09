@@ -37,9 +37,7 @@
                 <a href="?do=movie">院線片管理</a>|
                 <a href="?do=order">電影訂票管理</a>
             </div>
-            <div class="rb tab">
-                <h2 class="ct">請選擇所需功能</h2>
-            </div>
+
             <?php 
   
   $do=$_GET['do']??'main';
