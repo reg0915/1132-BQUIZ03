@@ -1,14 +1,82 @@
+<style>
+
+</style>
+
+
 <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
     <div class="rb tab" style="width:95%;">
-        <div id="abgne-block-20111227">
-            <ul class="lists">
-            </ul>
-            <ul class="controls">
-            </ul>
+        <div class="poster-block">
+            <div class="lists">
+                <?php 
+                    $posters=$Poster->all(['sh'=>1]," order by rank");
+                    foreach($posters as $idx => $poster):
+                ?>
+                <div class="poster">
+                    <img src="./upload/<?=$poster['img'];?>" alt="">
+                    <span><?=$poster['name'];?></span>
+                </div>
+                <?php
+                    endforeach;
+                ?>
+            </div>
+            <div class="controls">
+                <div class='left'></div>
+                <div class='icons'>
+                    <?php 
+                        foreach($posters as $idx => $poster):
+                    ?>
+                    <div class="icon">
+                        <img src="./upload/<?=$poster['img'];?>">
+                        <div><?=$poster['name'];?></div>
+                    </div>
+                    <?php endforeach;?>
+                </div>
+                <div class='right'></div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+$(".poster").eq(0).show();
+
+let slider = setInterval(() => {
+    sliders();
+}, 2500);
+
+function sliders() {
+    let now = $(".poster:visible").index();
+    let next = ($(".poster").length == now + 1) ? 0 : now + 1;
+    let ani = $(".poster").eq(next).data('ani');
+    //console.log(now,next)
+    switch (ani) {
+        case 1:
+            //淡入淡出
+            $(".poster").eq(now).fadeOut(1000, function() {
+                $(".poster").eq(next).fadeIn(1000);
+            });
+            break;
+        case 2:
+            //縮放
+            $(".poster").eq(now).hide(1000, function() {
+                $(".poster").eq(next).show(1000);
+            });
+            break;
+        case 3:
+            //滑入滑出
+            $(".poster").eq(now).slideUp(1000, function() {
+                $(".poster").eq(next).slideDown(1000);
+            });
+
+            break;
+    }
+
+}
+</script>
+
+
+
 <div class="half">
     <h1>院線片清單</h1>
     <?php 
@@ -60,8 +128,7 @@
                 </div>
                 <div style="width:100%;" class="ct">
                     <button onclick="location.href='?do=intro&id=<?=$row['id'];?>'">劇情簡介</button>
-                    <button onclick="location.href='?do=order$id=<?=$row['id'];?>'">線上訂票</button>>
-
+                    <button onclick="location.href='?do=order&id=<?=$row['id'];?>'">線上訂票</button>
                 </div>
             </div>
             <?php
