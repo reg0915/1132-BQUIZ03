@@ -12,7 +12,7 @@
                     $posters=$Poster->all(['sh'=>1]," order by rank");
                     foreach($posters as $idx => $poster):
                 ?>
-                <div class="poster">
+                <div class="poster" data-ani="<?=$poster['ani'];?>">
                     <img src="./upload/<?=$poster['img'];?>" alt="">
                     <span><?=$poster['name'];?></span>
                 </div>
