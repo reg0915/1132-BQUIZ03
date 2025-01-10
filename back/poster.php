@@ -71,7 +71,7 @@ $(".sw").on("click", function() {
 
 
 <div style="height: 170px;">
-    <h3 class='ct'>預告片海報</h3>
+    <h3 class='ct'>新增預告片海報</h3>
     <form action="./api/add_poster.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
