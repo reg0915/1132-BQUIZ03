@@ -27,6 +27,22 @@
     height: 85px;
     text-align: center;
     padding: 2px;
+    position: relative;
+}
+
+
+.null {
+    background: url("icon/03D02.png") center no-repeat;
+}
+
+.booked {
+    background: url("icon/03D03.png") center no-repeat;
+}
+
+.chk {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
 }
 </style>
 
@@ -36,8 +52,9 @@
 <div id="info">
     <?php
 for($i=0;$i<20;$i++){
-echo "<div class='seat'>";
-echo floor($i/5)+1 ."排" .($i%5+1) ."號";
+            echo "<div class='seat null'>";
+            echo  floor($i/5)+1 ."排".($i%5+1)."號";
+            echo "<input type='checkbox' class='chk' value='$i'>";
 echo "</div>";
 
 }
@@ -49,7 +66,7 @@ echo "</div>";
 
 </div>
 <div id="movieInfo">
-    <div>您選擇的電影是:<?=$_GET['name'];?></div>
+    <div>您選擇的電影是：<?=$_GET['name'];?></div>
     <div>您選擇的時刻是：<?=$_GET['date']."&nbsp;&nbsp;".$_GET['session'];?></div>
     <div>您已經<span id='tickets'></span>勾選張票，最多可以購買四張票</div>
     <div class='ct'>
