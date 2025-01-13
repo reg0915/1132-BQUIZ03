@@ -75,17 +75,33 @@ function sliders() {
 }
 let total = $(".icon").length;
 let p = 0;
-
 $(".left,.right").on("click", function() {
-    if ((p + 1) <= (total - 4)) {
-
-        p++;
-        $(".icon").animate({
-            right: 80 * p
-        });
-
+    if ($(this).hasClass('left')) {
+        // if (p - 1 >= 0) {
+        //     p--;
+        // }
+        p = (p - 1 >= 0) ? p - 1 : 0;
+    } else {
+        // if (p = 1 <= total - 4) {
+        //     p++;
+        // }
+        p = (p + 1 <= total - 4) ? p + 1 : total - 4;
     }
+    $(".icon").animate({
+        right: p * 80
+    });
 })
+
+$(".icons").hover(
+    function() {
+        clearInterval(slider);
+    },
+    function() {
+        slider = setInterval(() => {
+            sliders();
+        }, 2500);
+    }
+)
 </script>
 
 
