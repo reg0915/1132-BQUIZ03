@@ -1,8 +1,4 @@
-<style>
-
 </style>
-
-
 <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
     <div class="rb tab" style="width:95%;">
@@ -45,14 +41,16 @@ let slider = setInterval(() => {
     sliders();
 }, 2500);
 
+
 function sliders(next = -1) {
     let now = $(".poster:visible").index();
     if (next == -1) {
-
         next = ($(".poster").length == now + 1) ? 0 : now + 1;
     }
     let ani = $(".poster").eq(next).data('ani');
+    //console.log(now,next,ani)
     //console.log(now,next)
+
     switch (ani) {
         case 1:
             //淡入淡出
@@ -67,7 +65,6 @@ function sliders(next = -1) {
             });
             break;
         case 3:
-            .
             //滑入滑出
             $(".poster").eq(now).slideUp(1000, function() {
                 $(".poster").eq(next).slideDown(1000);
@@ -81,16 +78,17 @@ let total = $(".icon").length;
 let p = 0;
 $(".left,.right").on("click", function() {
     if ($(this).hasClass('left')) {
-        // if (p - 1 >= 0) {
-        //     p--;
-        // }
+        /* if(p-1>=0){
+            p--;
+        } */
         p = (p - 1 >= 0) ? p - 1 : 0;
     } else {
-        // if (p = 1 <= total - 4) {
-        //     p++;
-        // }
+        /* if(p+1<=total-4){
+            p++;
+        } */
         p = (p + 1 <= total - 4) ? p + 1 : total - 4;
     }
+
     $(".icon").animate({
         right: p * 80
     });
@@ -105,17 +103,13 @@ $(".icons").hover(
             sliders();
         }, 2500);
     }
-
 )
+
 $(".icon").on("click", function() {
     let next = $(this).index();
     sliders(next);
 })
 </script>
-
-
-
-
 
 
 

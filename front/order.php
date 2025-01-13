@@ -35,16 +35,16 @@
     <table class="order-form">
         <tr>
             <td>電影:</td>
-            <td><select name="movie" id=""></select>
+            <td><select name="movie" id="movie"></select>
             </td>
         </tr>
         <tr>
             <td>日期:</td>
-            <td><select name="date" id=""></select></td>
+            <td><select name="date" id="date"></select></td>
         </tr>
         <tr>
             <td>場次:</td>
-            <td><select name="session" id=""></select></td>
+            <td><select name="session" id="session"></select></td>
         </tr>
         <tr>
             <td colspan='2' class='ct'>
@@ -56,6 +56,7 @@
 </form>
 <script>
 getMovies();
+let id = new
 
 function getMovies() {
     $.get("api/get_movies.php", function(movies) {
