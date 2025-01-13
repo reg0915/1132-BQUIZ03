@@ -1,6 +1,6 @@
 <?php include_once "db.php";
 
-$movie=$_Movie->find($_GET['movie']);
+$movie=$Movie->find($_GET['movie']);
 $date=$_GET['date'];
 
 
