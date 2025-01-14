@@ -75,7 +75,13 @@ echo "</div>";
     </div>
 </div>
 <script>
-let seats = Array();
+let seats = new Array();
+let num = {
+    1: '一',
+    2: '二',
+    3: '三',
+    4: '四'
+};
 
 $(".chk").on("change", function() {
     if ($(this).prop('checked')) {
@@ -88,7 +94,17 @@ $(".chk").on("change", function() {
     } else {
         seats.splice(seats.indexOf($(this).val()), 1)
     }
-    console.log(seats);
+    $("#tickets").text(seats.length)
+    // $("#tickets").text(seats[seats.length])
+    // console.log(seats);
 
 })
+
+function checkout() {
+    movie.seats = seats;
+    console.log(movie)
+    $.post("api/checkout.php", movie, function(res) {
+        console.log(res)
+    })
+}
 </script>
