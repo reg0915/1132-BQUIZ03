@@ -16,7 +16,7 @@
             }
         ?>
     </select>
-
+    <button onclick="qdel()">刪除</button>
 
 </div>
 <style>
@@ -45,7 +45,7 @@
 
 <div style="height:300px; overflow:auto">
     <?php
-$orders=$Order->all();
+$orders=$Order->all("order by no desc");
 foreach($orders as $order):
 
 ?>
@@ -76,3 +76,40 @@ foreach($seats as $seat){
     <hr>
     <?php endforeach;?>
 </div>
+
+<script>
+function del(id) {
+    if (confirm("確定要刪除此訂單嗎?")) {
+        $.post("api/del.php", {
+            table: 'Order',
+            id
+        }, function() {
+            location.reload();
+        })
+    }
+}
+
+function qdel() {
+
+    let type = $("input[name='type']:checked").val();
+    let data = "";
+    switch (type) {
+        case "date":
+            data = $("#date").val();
+            break;
+        case "movie":
+            data = $("#movie").val();
+            break;
+    }
+
+    if (confirm("確定要刪除所有符合條件的訂單嗎?")) {
+        $.post("api/qdel.php", {
+            type,
+            data
+        }, function() {
+            location.reload();
+        })
+    }
+
+}
+</script>
