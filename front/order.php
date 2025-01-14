@@ -88,6 +88,7 @@ function getDays() {
     $.get("api/get_days.php", {
         movie: $("#movie").val()
     }, function(days) {
+        console.log(days)
         $("#date").html(days);
         getSessions();
     })

@@ -3,7 +3,7 @@
 $movie=$Movie->find($_GET['movie']);
 $date=$_GET['date'];
 
-
+$today=date("Y-m-d");
 $sess=[
     '1'=>"14:00~16:00",
     '2'=>"16:00~18:00",
@@ -13,8 +13,14 @@ $sess=[
 ];
 $now=date("G")-13;
 
-$start=($now>0)?ceil($now/2)+1:1;
+// $start=($now>0)?ceil($now/2)+1:1;
 
+if($today==$date && $now < 9){
+    $start=($now>0)?ceil($now/2)+1:1;
+}else{
+    $start=1;
+}
+//echo $now . $start;
 $seats=20;
 
 
